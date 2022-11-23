@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import bankReducer from "./bankReducer"
+import bankReducer from "./startReducer"
 
 
 const reducers = combineReducers({
