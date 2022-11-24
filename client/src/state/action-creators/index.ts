@@ -6,8 +6,9 @@ export const enterUsername = (username: string) =>{
     return (dispatch: Dispatch<Action>) =>{
         dispatch({
             type: ActionType.USERNAME,
-            payload: username
+            payload: username,
         })
+        console.log(username)
     }
 }
 export const enterPassword = (password: string) =>{

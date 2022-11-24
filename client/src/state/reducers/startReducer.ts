@@ -6,7 +6,7 @@ const InitialState = "";
 const reducer = (state: string = InitialState, action: Action)=>{
     switch(action.type){
         case ActionType.USERNAME: 
-            return state;
+            return action.payload;
         case ActionType.PASSWORD: 
             return state;    
         case ActionType.PROFILE_PICTURE: 
