@@ -4,12 +4,13 @@ const InitialState = "";
 
 const reducer = (state: string = InitialState, action: Action)=>{
     switch(action.type){
-        case ActionType.USERNAME: 
-            return action.payload; 
+        case ActionType.PASSWORD: 
+            return action.payload;    
         case ActionType.PROFILE_PICTURE: 
             return 0;
         default: 
             return state
+
     }
 }
 

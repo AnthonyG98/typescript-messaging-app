@@ -6,21 +6,26 @@ const { Op } = require("sequelize");
 const e = require("express");
 
 router.post("/", async (req, res) => {
-  const { fullName, username, password, profile_picture } = req.body;
-  const createdUser = bcrypt.hash(password.payload, 10).then((hash) => {
-    Users.create({
-      fullName: fullName.payload,
-      username: username.payload,
-      //password hashing payload as well as input password
-      password: hash,
-      profile_picture: profile_picture,
+  const { username, password, profile_picture } = req.body;
+  const checkUser = await Users.findOne({  where: { username: username } } );
+  if(!checkUser){
+    const createdUser = bcrypt.hash(password, 10).then((hash) => {
+      Users.create({
+        username: username,
+        //password hashing payload as well as input password
+        password: hash,
+        profile_picture: profile_picture,
+      });
     });
-  });
-  res.json(password);
+    res.json("Success");
+  }
+  else {
+    return res.json("User already exists");
+  }
 });
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  const user = await Users.findOne({  where: { username: username.payload } } );
+  const user = await Users.findOne({  where: { username: username } } );
   if (!user) {
     res.json({ error: "User does not exist." });
   } 

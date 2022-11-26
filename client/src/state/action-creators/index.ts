@@ -8,7 +8,6 @@ export const enterUsername = (username: string) =>{
             type: ActionType.USERNAME,
             payload: username,
         })
-        console.log(username)
     }
 }
 export const enterPassword = (password: string) =>{
