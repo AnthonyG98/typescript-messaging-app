@@ -81,3 +81,54 @@ body {
   color: rgb(68, 191, 212);
   transition: 0.2s ease;
 }
+.dashboard-container {
+  width: 100%;
+  height: auto;
+}
+.dash-head-container{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(224, 224, 224);
+}
+.heading-container {
+  display: flex;
+  flex-direction: row;
+  font-family: 'montserratregular';
+}
+#other {
+  color: rgb(176, 176, 176);
+  margin-left: 10px;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashInputImg{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.search-input{
+  height: 30px;
+  font-size: 20px;
+  font-family: 'montserratregular';
+}
+.search-btn {
+  margin-left: 5px;
+  background-color: rgb(68, 191, 212);
+  border: 1px solid rgb(68, 191, 212);
+  color: #fff;
+  font-family: 'montserratregular';
+  font-size: 25px;
+  transition: 0.2s ease;
+}
+.search-btn:hover {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid rgb(68, 191, 212);
+  color: rgb(68, 191, 212);
+  transition: 0.2s ease;
+}

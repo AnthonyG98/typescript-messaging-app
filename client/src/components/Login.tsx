@@ -19,6 +19,8 @@ export function Login (){
             password: userPass
         }
         axios.post(`${url}/users/login`, loginData).then(response =>{
+            localStorage.setItem("id", response.data.id);
+            localStorage.setItem("username", response.data.username);
             history("/dashboard")
         })
     }

@@ -24,9 +24,22 @@ export function Signup (){
             profile_picture: "default_nlfrji"
         }   
         axios.post(`${url}/users`, signUpData).then(response => {
-            history("/dashboard")
+            window.setTimeout(getLoggedInUser, 1000);    
         })
     }   
+    const getLoggedInUser = () =>{
+        const loginData = {
+            username: userInput,
+            password: userPass
+        }
+        axios.post(`${url}/users/login`, loginData).then(response =>{
+            localStorage.setItem("id", response.data.id);
+            localStorage.setItem("username", response.data.username);
+            localStorage.setItem("profile_picture", response.data.profile_picture)
+
+            history("/dashboard");
+        });
+    }
     // useEffect(()=>{
     //     const getLoggedInUser = () =>{
     //         axios.get(`${url}/users/${userInput}`).then(response =>{
