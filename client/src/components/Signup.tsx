@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actionCreators, State } from '../state';
 import { bindActionCreators } from "redux"
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Signup (){
     let url = 'http://localhost:3001';
@@ -20,19 +20,21 @@ export function Signup (){
     const createUser = () =>{
         const signUpData = {
             username: userInput,
-            password: userPass
+            password: userPass,
+            profile_picture: "default_nlfrji"
         }   
         axios.post(`${url}/users`, signUpData).then(response => {
-            // history("/dashboard")
-            console.log(response)
-            setLogon(true)
+            history("/dashboard")
         })
     }   
-    if(logon){
-        axios.get(`${url}/users/${userInput}`).then(response =>{
-            console.log(response)
-        })
-    }
+    // useEffect(()=>{
+    //     const getLoggedInUser = () =>{
+    //         axios.get(`${url}/users/${userInput}`).then(response =>{
+    //             console.log(response);
+    //         });
+    //     }
+    //     getLoggedInUser();
+    // }, [logon])
     return(
         <div className="login-container">
             <div className="login-entry-container">

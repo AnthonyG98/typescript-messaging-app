@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actionCreators, State } from '../state';
 import { bindActionCreators } from "redux"
 import axios from "axios";
+// import { Image } from "cloudinary-react";
+
 
 export function Dashboard(){
     let url = 'http://localhost:3001';
@@ -13,18 +15,28 @@ export function Dashboard(){
     const userPass = useSelector((state: State)=> state.pass);
 
 
+
     const getLoggedInUser = () =>{
-        axios.get(`${url}/users/${userInput}`).then(response =>{
+        const loginData = {
+            username: userInput,
+            password: userPass
+        }
+        axios.post(`${url}/users/login`, loginData).then(response =>{
             console.log(response)
         })
     }
     useEffect(()=>{
-        getLoggedInUser();
+        window.setTimeout(getLoggedInUser, 1000);    
     }, [])
     return(
         <div className="dashboard-container">
             <h1>{userInput}</h1>
             <h1>{userPass}</h1>
+                {/* <Image
+                className="dashInputImg"
+                cloudName="delktfw1a"
+                publicId={userProfileImg.payload}
+                /> */}
             hey
         </div>
     )
