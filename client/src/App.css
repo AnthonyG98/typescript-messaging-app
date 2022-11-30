@@ -132,3 +132,16 @@ body {
   color: rgb(68, 191, 212);
   transition: 0.2s ease;
 }
+.dash-props-container {
+  width: fit-content;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-right: 1px solid rgb(224, 224, 224);
+}
+.inbox-name {
+  font-family: 'montserratregular';
+  font-size: 15px;
+  margin-right: 15px;
+}
