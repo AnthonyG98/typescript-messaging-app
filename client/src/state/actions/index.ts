@@ -12,5 +12,8 @@ interface ProfilePictureAction {
     type: ActionType.PROFILE_PICTURE
     payload: string
 }
-
-export type Action = UsernameAction | PasswordAction | ProfilePictureAction
+interface SearchAction {
+    type: ActionType.SEARCH
+    payload: string
+}
+export type Action = UsernameAction | PasswordAction | ProfilePictureAction | SearchAction

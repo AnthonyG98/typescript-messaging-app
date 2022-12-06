@@ -3,7 +3,6 @@ import { Login } from './components/Login'
 import { Signup } from './components/Signup';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Dashboard } from './components/Dashboard';
-import { DashProps } from "./props/DashProps"
 function App() {
   return (
     <Router>

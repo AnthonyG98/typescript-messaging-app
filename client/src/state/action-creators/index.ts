@@ -26,3 +26,11 @@ export const enterProfilePicture = (profilePicture: string) =>{
         })
     }
 }
+export const enterSearchUser = (search: string) =>{
+    return (dispatch: Dispatch<Action>) =>{
+        dispatch({
+            type: ActionType.SEARCH,
+            payload: search
+        })
+    }
+}
