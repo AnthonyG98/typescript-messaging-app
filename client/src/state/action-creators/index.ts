@@ -34,3 +34,11 @@ export const enterSearchUser = (search: string) =>{
         })
     }
 }
+export const enterChatId = (chat: string) =>{
+    return (dispatch: Dispatch<Action>) =>{
+        dispatch({
+            type: ActionType.SEARCH,
+            payload: chat
+        })
+    }
+}

@@ -21,14 +21,9 @@ module.exports = (sequelize, DataTypes) =>{
             allowNull: true
         },
         chatId:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         }
-    })
-    Messages.associate = (models) => {
-        Messages.hasMany(models.Users, {
-          onDelete: "cascade",
-        });
-    };
+    });
     return Messages
 }

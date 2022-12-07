@@ -2,5 +2,6 @@ export enum ActionType {
     USERNAME = "username",
     PASSWORD = "password",
     PROFILE_PICTURE = "profile_picture",
-    SEARCH = "search"
+    SEARCH = "search",
+    CHAT = "chat"
 }

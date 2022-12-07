@@ -13,5 +13,10 @@ module.exports = (sequelize, DataTypes) =>{
             allowNull: true
         }
     })
+    Users.associate = (models) => {
+        Users.hasMany(models.Messages, {
+          onDelete: "cascade",
+        });
+    };
     return Users
 }

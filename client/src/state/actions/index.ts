@@ -16,4 +16,8 @@ interface SearchAction {
     type: ActionType.SEARCH
     payload: string
 }
-export type Action = UsernameAction | PasswordAction | ProfilePictureAction | SearchAction
+interface ChatAction {
+    type: ActionType.CHAT
+    payload: string
+}
+export type Action = UsernameAction | PasswordAction | ProfilePictureAction | SearchAction | ChatAction

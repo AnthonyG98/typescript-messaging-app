@@ -11,10 +11,11 @@ export function Dashboard(){
     let url = 'http://localhost:3001';
 
     const dispatch = useDispatch();
-    const {enterPassword, enterUsername, enterProfilePicture, enterSearchUser} = bindActionCreators(actionCreators, dispatch);
+    const {enterPassword, enterUsername, enterProfilePicture, enterSearchUser, enterChatId} = bindActionCreators(actionCreators, dispatch);
     const userInput = useSelector((state: State)=> state.user);
     const userPass = useSelector((state: State)=> state.pass);
     const userSearch = useSelector((state: State) => state.search);
+    const userChat = useSelector((state: State) => state.chat);
 
     interface UserSearchData {
         inputSearchUser: React.ChangeEvent<HTMLInputElement>;
@@ -32,6 +33,15 @@ export function Dashboard(){
             enterUsername(response.data.username);
         })
     }
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    function generateString(length: number) {
+          let result = "";
+          const charactersLength = characters.length;
+          for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+          }
+          console.log(result)
+    }
     const searchUser = (  search: string ) => {
         let arrAllData = [];
         axios.get(`${url}/users/${search}`).then(response =>{
@@ -43,6 +53,7 @@ export function Dashboard(){
                         <SearchProps 
                         searchImg={searchData.profile_picture}
                         searchUsername={searchData.username}
+                        messageBtn={() => generateString(8)}
                         />
                     )
                 })
@@ -76,6 +87,12 @@ export function Dashboard(){
             <div className="dashboard-props">
                 <>{<DashProps />}</>
                 {searchForUser}
+            </div>
+            <div className="msg-container">
+                <input type="text" className="input-msg"/>
+                <div className="plane-container">
+                    <i class="fas fa-paper-plane"></i>     
+                </div>       
             </div>
         </div>
     )
