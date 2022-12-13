@@ -20,4 +20,8 @@ interface ChatAction {
     type: ActionType.CHAT
     payload: string
 }
-export type Action = UsernameAction | PasswordAction | ProfilePictureAction | SearchAction | ChatAction
+interface MessageAction {
+    type: ActionType.MESSAGE
+    payload: string
+}
+export type Action = UsernameAction | PasswordAction | ProfilePictureAction | SearchAction | ChatAction | MessageAction

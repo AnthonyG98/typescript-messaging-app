@@ -1,9 +1,5 @@
 module.exports = (sequelize, DataTypes) =>{
     const Messages = sequelize.define("Messages", {
-        sender_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         receiver_id: {
             type: DataTypes.INTEGER,
             allowNull: false

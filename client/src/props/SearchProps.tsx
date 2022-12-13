@@ -8,7 +8,7 @@ interface propsDetails {
 export function SearchProps(props: propsDetails){
     return(
         <>
-            <div className="search-background">
+            <div className="search-background" id="props-container">
             <div className="search-props-container">
                 <Image
                 className="search-img"

@@ -1,15 +1,19 @@
 import { Image } from "cloudinary-react";
-
-export function DashProps() {
+interface propsDetails {
+    messageImg: string,
+    messageUsername: string,
+    
+}
+export function DashProps(props: propsDetails) {
     return(
         <div className="dash-props-container">
             <div className="msg-sidebar"></div>
             <Image
                 className="dashInputImg"
                 cloudName="delktfw1a"
-                publicId={localStorage.getItem("profile_picture")}
+                publicId={props.messageImg}
                 />
-            <p className="inbox-name">{localStorage.getItem("username")}</p>   
+            <p className="inbox-name">{props.messageUsername}</p>   
         </div>
     )
 }
