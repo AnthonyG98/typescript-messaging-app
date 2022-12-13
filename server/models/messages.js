@@ -4,7 +4,11 @@ module.exports = (sequelize, DataTypes) =>{
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        profile_picture:{
+        sender_profile_picture:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        receiver_profile_picture:{
             type: DataTypes.STRING,
             allowNull: true
         },

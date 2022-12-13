@@ -2,11 +2,11 @@ import { Image } from "cloudinary-react";
 interface propsDetails {
     messageImg: string,
     messageUsername: string,
-    
+    openChatById: void | MouseEventHandler
 }
 export function DashProps(props: propsDetails) {
     return(
-        <div className="dash-props-container">
+        <div className="dash-props-container" onClick={props.openChatById}>
             <div className="msg-sidebar"></div>
             <Image
                 className="dashInputImg"

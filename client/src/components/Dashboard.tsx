@@ -25,14 +25,20 @@ export function Dashboard(){
       
     // React state management
     const [ profilePicture, setProfilePicture ] = useState();
+    const [myId, setMyId] = useState<number>();
     const [searchForUser, setSearchForUser] = useState<any>([]);
+    const [messageUser, setMessageUser] = useState<any>([]);
     const [receiverId, setReceiverId] = useState<number>();
+    const [receiverImg, setReceiverImg] = useState<string>();
     const [inputSearchUser, setInputSearchUser] = useState<string>('');
 
     const getLoggedInUser = () =>{
         axios.get(`${url}/users/${localStorage.getItem("username")}`).then(response =>{
             setProfilePicture(response.data.profile_picture);
+            setMyId(response.data.id);
             enterUsername(response.data.username);
+            console.log(response.data)
+            getMyInbox();
         })
     }
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -50,8 +56,8 @@ export function Dashboard(){
         let arrAllData = [];
         axios.get(`${url}/users/${search}`).then(response =>{
             arrAllData = [response.data]
-            console.log(arrAllData);
             setReceiverId(response.data.id);
+            setReceiverImg(response.data.profile_picture);
             setSearchForUser(
                 arrAllData.map((searchData: any) =>{
                     return(
@@ -72,33 +78,74 @@ export function Dashboard(){
             username: localStorage.getItem("username"),
             message: userMessage,
             chatId: userChat,
-            userId: localStorage.getItem("id")
+            userId: localStorage.getItem("id"),
+            receiver_profile_picture: receiverImg,
+            sender_profile_picture: profilePicture
         }
         axios.post(`${url}/message`, messageData).then(response =>{
             console.log(response);
         })
         return toEmptyInput.value = "";
     }
-    const getMyInbox = () =>{
-        axios.get(`${url}/message/inbox/${localStorage.getItem("id")}`).then(response =>{
-            //map and find out if this is sender return sender profile picture
-            response.data.map((allInbox: any) =>{
+    const openChat = (chat: string) =>{
+        axios.get(`${url}/message/chat/${chat}`).then(response =>{
+            response.data.map((allData: any )=>{
                 return(
-                //     <DashProps 
-                //     messageUsername={localStorage.getItem("id") === allInbox.receiver_id ?
-                //     localStorage.getItem("username") : "hey"
-                // }
-                //     />
-                axios.get(`${url}/users/${allInbox.username}`).then(response =>{
-                    console.log(response.data)
-                })
+                    setReceiverId(allData.receiver_id),
+                    enterChatId(allData.chatId),
+                    setReceiverImg(allData.receiver_profile_picture)
                 )
             })
         })
     }
+    const getMyInbox = () =>{
+        axios.get(`${url}/users/${localStorage.getItem("username")}`).then(response =>{
+            let myLoginId = response.data.id
+            axios.get(`${url}/message/inbox/${localStorage.getItem("id")}`).then(response =>{
+                //map and find out if this is sender return sender profile picture
+                // console.log(response.data)
+                setMessageUser(
+                    response.data.map((allInbox: any) =>{         
+                   return (
+                    <DashProps 
+                        messageUsername={allInbox.message}
+                        messageImg={ 
+                            allInbox.UserId === myLoginId? allInbox.receiver_profile_picture 
+                            : allInbox.sender_profile_picture
+                        
+                        }
+                        openChatById={()=> openChat(allInbox.chatId)}
+                    />
+                   )
+                })
+                )
+            })
+        })
+        //*note: to get only a single instance of chat on left hand side make all other msgs null
+        // axios.get(`${url}/message/inbox/${localStorage.getItem("id")}`).then(response =>{
+        //     //map and find out if this is sender return sender profile picture
+        //     console.log(response.data)
+        //     setMessageUser(
+        //         response.data.map((allInbox: any) =>{
+        //         console.log(allInbox.UserId)
+        //         console.log(myId);
+        //         console.log(allInbox)
+        //        return (
+        //         <DashProps 
+        //             messageUsername={allInbox.message}
+        //             messageImg={ 
+        //                 allInbox.UserId === myId ? allInbox.receiver_profile_picture 
+        //                 : allInbox.sender_profile_picture
+                    
+        //             }
+        //         />
+        //        )
+        //     })
+        //     )
+        // })
+    }
     useEffect(()=>{
         getLoggedInUser();
-        getMyInbox();
     }, [])
     return(
         <div className="dashboard-container">
@@ -122,7 +169,7 @@ export function Dashboard(){
                 </div>
             </div>
             <div className="dashboard-props">
-                <>{<DashProps />}</>
+                <>{messageUser}</>
                 {searchForUser}
             </div>
             <div className="msg-container">
