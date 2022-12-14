@@ -1,11 +1,10 @@
 @font-face {
-  font-family: 'montserratregular';
-  src: url('fonts/montserrat-regular-webfont.woff2') format('woff2'),
-       url('fonts/montserrat-regular-webfont.woff') format('woff'),
-       url('fonts/montserrat-regular-webfont.ttf') format('truetype');
+  font-family: "montserratregular";
+  src: url("fonts/montserrat-regular-webfont.woff2") format("woff2"),
+    url("fonts/montserrat-regular-webfont.woff") format("woff"),
+    url("fonts/montserrat-regular-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-
 }
 body {
   margin: 0;
@@ -19,7 +18,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'montserratregular';
+  font-family: "montserratregular";
 }
 .login-entry-container {
   background-color: rgb(0, 77, 90);
@@ -30,7 +29,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.login-head-container{
+.login-head-container {
   display: flex;
   color: #fff;
 }
@@ -49,13 +48,13 @@ body {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid rgb(68, 191, 212);
-  font-family: 'montserratregular';
+  font-family: "montserratregular";
   color: #fff;
 }
 .login-btn {
   background-color: rgb(68, 191, 212);
   border: none;
-  font-family: 'montserratregular';
+  font-family: "montserratregular";
   color: #fff;
   font-size: 20px;
   transition: 0.2s ease;
@@ -85,7 +84,7 @@ body {
   width: 100%;
   height: auto;
 }
-.dash-head-container{
+.dash-head-container {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgb(224, 224, 224);
@@ -93,7 +92,7 @@ body {
 .heading-container {
   display: flex;
   flex-direction: row;
-  font-family: 'montserratregular';
+  font-family: "montserratregular";
 }
 #other {
   color: rgb(176, 176, 176);
@@ -104,24 +103,24 @@ body {
   justify-content: center;
   align-items: center;
 }
-.dashInputImg{
+.dashInputImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-left: 10px;
   margin-right: 10px;
 }
-.search-input{
+.search-input {
   height: 30px;
   font-size: 20px;
-  font-family: 'montserratregular';
+  font-family: "montserratregular";
 }
 .search-btn {
   margin-left: 5px;
   background-color: rgb(68, 191, 212);
   border: 1px solid rgb(68, 191, 212);
   color: #fff;
-  font-family: 'montserratregular';
+  font-family: "montserratregular";
   font-size: 25px;
   transition: 0.2s ease;
 }
@@ -141,7 +140,7 @@ body {
   border-right: 1px solid rgb(224, 224, 224);
 }
 .inbox-name {
-  font-family: 'montserratregular';
+  font-family: "montserratregular";
   font-size: 15px;
   margin-right: 15px;
 }
@@ -162,7 +161,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'montserratregular';
+  font-family: "montserratregular";
   width: 400px;
   height: fit-content;
   padding: 25px;
@@ -182,15 +181,24 @@ body {
   right: 2%;
   bottom: 2%;
   display: flex;
+  flex-direction: column;
   justify-content: end;
   align-items: center;
 }
-.input-msg{
+.input-msg-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.chat-container {
+  width: 100%;
+}
+.input-msg {
   width: 100%;
   height: 30px;
   font-size: 25px;
 }
-.plane-container{
+.plane-container {
   width: 50px;
   height: 50px;
   background-color: rgb(68, 191, 212);

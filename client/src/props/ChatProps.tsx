@@ -6,7 +6,7 @@ interface propsDetails {
 export function ChatProps(props: propsDetails) {
   return (
     <>
-      <div className="dash-props-container">
+      <div className="chat-props-container">
         <div className="msg-sidebar"></div>
         <Image
           className="dashInputImg"

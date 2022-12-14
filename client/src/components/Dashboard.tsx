@@ -103,14 +103,19 @@ export function Dashboard() {
           enterChatId(allData.chatId),
           setReceiverImg(allData.receiver_profile_picture),
           setMyId(null),
-          setChat(
-            <ChatProps
-              chatImg={allData.receiver_profile_picture}
-              chatMessage={allData.message}
-            />
-          )
+          console.log(allData.message)
         );
       });
+      setChat(
+        response.data.map((allChat: any) => {
+          return (
+            <ChatProps
+              chatImg={allChat.sender_profile_picture}
+              chatMessage={allChat.message}
+            />
+          );
+        })
+      );
     });
   };
   const getMyInbox = () => {
@@ -195,15 +200,17 @@ export function Dashboard() {
         {searchForUser}
       </div>
       <div className="msg-container">
-        {chat}
-        <input
-          type="text"
-          className="input-msg"
-          id="msg-input"
-          onChange={(e) => enterMessage(e.target.value)}
-        />
-        <div className="plane-container" onClick={sendMessage}>
-          <i class="fas fa-paper-plane"></i>
+        <div className="chat-container">{chat}</div>
+        <div className="input-msg-container">
+          <input
+            type="text"
+            className="input-msg"
+            id="msg-input"
+            onChange={(e) => enterMessage(e.target.value)}
+          />
+          <div className="plane-container" onClick={sendMessage}>
+            <i class="fas fa-paper-plane"></i>
+          </div>
         </div>
       </div>
     </div>
