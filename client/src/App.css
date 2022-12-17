@@ -222,3 +222,31 @@ body {
   color: rgb(68, 191, 212);
   transition: 0.2s ease;
 }
+.settings-container {
+  width: 35%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -35%;
+  background-color: rgb(68, 191, 212);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation-fill-mode: forwards !important;
+}
+#settings {
+  animation-fill-mode: forwards;
+}
+@keyframes move-left {
+  0% {
+    right: -35%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+.settings-text {
+  color: #fff;
+  font-family: "montserratregular";
+}

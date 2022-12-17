@@ -7,6 +7,7 @@ import { Image } from "cloudinary-react";
 import { DashProps } from "../props/DashProps";
 import { SearchProps } from "../props/SearchProps";
 import { ChatProps } from "../props/ChatProps";
+import { Settings } from "./Settings";
 export function Dashboard() {
   let url = "http://localhost:3001";
 
@@ -145,28 +146,14 @@ export function Dashboard() {
             );
           });
       });
-    //*note: to get only a single instance of chat on left hand side make all other msgs null
-    // axios.get(`${url}/message/inbox/${localStorage.getItem("id")}`).then(response =>{
-    //     //map and find out if this is sender return sender profile picture
-    //     console.log(response.data)
-    //     setMessageUser(
-    //         response.data.map((allInbox: any) =>{
-    //         console.log(allInbox.UserId)
-    //         console.log(myId);
-    //         console.log(allInbox)
-    //        return (
-    //         <DashProps
-    //             messageUsername={allInbox.message}
-    //             messageImg={
-    //                 allInbox.UserId === myId ? allInbox.receiver_profile_picture
-    //                 : allInbox.sender_profile_picture
+  };
+  //*note: to get only a single instance of chat on left hand side make all other msgs null ^^^^^^^
 
-    //             }
-    //         />
-    //        )
-    //     })
-    //     )
-    // })
+  const openSettings = () => {
+    const settingsContainer: HTMLElement | null =
+      document.getElementById("settings");
+    settingsContainer.style.animation = "move-left 1s ease";
+    settingsContainer.style.animationFillMode = "forwards";
   };
   useEffect(() => {
     getLoggedInUser();
@@ -192,6 +179,7 @@ export function Dashboard() {
             className="dashInputImg"
             cloudName="delktfw1a"
             publicId={profilePicture}
+            onClick={() => openSettings()}
           />
         </div>
       </div>
@@ -213,6 +201,7 @@ export function Dashboard() {
           </div>
         </div>
       </div>
+      <Settings />
     </div>
   );
 }
