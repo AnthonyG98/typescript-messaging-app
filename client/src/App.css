@@ -249,4 +249,10 @@ body {
 .settings-text {
   color: #fff;
   font-family: "montserratregular";
+  transition: 0.2s ease;
+}
+.settings-text:hover {
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: rgb(0, 77, 90);
 }

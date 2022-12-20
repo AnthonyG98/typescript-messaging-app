@@ -1,10 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export function Settings() {
   let url = "http://localhost:3001";
+  let history = useNavigate();
 
   const [image, setImage] = useState<FileList | null>();
+
+  const logoutUser = () => {
+    history("/");
+    localStorage.clear();
+  };
 
   const changeProfileImg = () => {
     const imgFormData = new FormData();
@@ -55,7 +62,9 @@ export function Settings() {
       <p className="settings-text" onClick={() => changeProfileImg()}>
         CHANGE PROFILE PICTURE
       </p>
-      <p className="settings-text">LOGOUT</p>
+      <p className="settings-text" onClick={() => logoutUser()}>
+        LOGOUT
+      </p>
     </div>
   );
 }
