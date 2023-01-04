@@ -188,6 +188,7 @@ export function Dashboard() {
         {searchForUser}
       </div>
       <div className="msg-container">
+        <div className="mob-msg-background"></div>
         <div className="chat-container">{chat}</div>
         <div className="input-msg-container">
           <input

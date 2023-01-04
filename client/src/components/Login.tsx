@@ -27,7 +27,12 @@ export function Login() {
     axios.post(`${url}/users/login`, loginData).then((response) => {
       localStorage.setItem("id", response.data.id);
       localStorage.setItem("username", response.data.username);
-      history("/dashboard");
+      console.log(response);
+      if (response.data.error) {
+        return alert(response.data.error);
+      } else {
+        history("/dashboard");
+      }
     });
   };
   return (
