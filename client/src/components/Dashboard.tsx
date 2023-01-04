@@ -9,7 +9,7 @@ import { SearchProps } from "../props/SearchProps";
 import { ChatProps } from "../props/ChatProps";
 import { Settings } from "./Settings";
 export function Dashboard() {
-  let url = "http://localhost:3001";
+  let url = "https://other-side.herokuapp.com";
 
   const dispatch = useDispatch();
   const { enterUsername, enterSearchUser, enterChatId, enterMessage } =
