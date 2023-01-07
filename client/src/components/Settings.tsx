@@ -6,7 +6,9 @@ export function Settings() {
   let url = "https://other-side.herokuapp.com";
   let history = useNavigate();
 
-  const [image, setImage] = useState<FileList | null>();
+  const [image, setImage] = useState<
+    FileList | string | null | File | boolean | any
+  >();
 
   const logoutUser = () => {
     history("/");
@@ -49,14 +51,13 @@ export function Settings() {
           });
       });
   };
-
   return (
     <div className="settings-container" id="settings">
       <input
         type="file"
         className="change-img"
         onChange={(e) => {
-          setImage(e.target.files[0]);
+          setImage(e.target.files?.[0]);
         }}
       />
       <p className="settings-text" onClick={() => changeProfileImg()}>

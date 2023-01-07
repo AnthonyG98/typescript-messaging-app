@@ -23,12 +23,11 @@ export function Signup() {
       password: userPass,
       profile_picture: "default_nlfrji",
     };
-    console.log(signUpData.username.length);
     if (signUpData.username === "" || signUpData.password === "") {
       alert("username or password cannot be blank");
       return history("/signup");
     }
-    if (signUpData.username.length < 8 || signUpData.password.length < 8) {
+    if (signUpData.username < 8 || signUpData.password < 8) {
       alert("username and password must be longer than 8 characters");
       return history("/signup");
     }
