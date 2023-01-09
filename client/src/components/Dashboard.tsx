@@ -53,7 +53,6 @@ export function Dashboard() {
         setProfilePicture(response.data.profile_picture);
         setMyId(response.data.id);
         enterUsername(response.data.username);
-        console.log(response.data);
         getMyInbox();
       });
   };
@@ -102,20 +101,18 @@ export function Dashboard() {
       sender_profile_picture: profilePicture,
     };
     axios.post(`${url}/message`, messageData).then((response) => {
-      console.log(response);
+      // console.log(response);
     });
     return (toEmptyInput.value = "");
   };
   const openChat = (chat: string) => {
     axios.get(`${url}/message/chat/${chat}`).then((response) => {
-      console.log(response.data);
       response.data.map((allData: any) => {
         return (
           setReceiverId(null),
           enterChatId(allData.chatId),
           setReceiverImg(allData.receiver_profile_picture),
-          setMyId(null),
-          console.log(allData.message)
+          setMyId(null)
         );
       });
       setChat(
@@ -139,7 +136,6 @@ export function Dashboard() {
           .get(`${url}/message/inbox/${localStorage.getItem("id")}`)
           .then((response) => {
             //map and find out if this is sender return sender profile picture
-            // console.log(response.data)
             setMessageUser(
               response.data.map((allInbox: any) => {
                 return (

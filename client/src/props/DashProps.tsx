@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 interface propsDetails {
   messageImg: string;
   messageUsername: string;
-  openChatById: void | MouseEventHandler;
+  openChatById: () => void;
 }
 const cld = new Cloudinary({
   cloud: {
@@ -16,7 +16,7 @@ export function DashProps(props: propsDetails) {
 
   return (
     <>
-      <div className="dash-props-container" onClick={() => props.openChatById}>
+      <div className="dash-props-container" onClick={props.openChatById}>
         <div className="msg-sidebar"></div>
         <AdvancedImage
           cldImg={myImage}
