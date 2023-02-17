@@ -6,7 +6,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export function Signup() {
-  let url = "https://other-side.herokuapp.com";
+  // let url = "https://other-side.herokuapp.com";
+  let url = "http://localhost:3001.com";
+
   let history = useNavigate();
 
   const dispatch = useDispatch();

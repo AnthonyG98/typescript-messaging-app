@@ -11,7 +11,8 @@ import { SearchProps } from "../props/SearchProps";
 import { ChatProps } from "../props/ChatProps";
 import { Settings } from "./Settings";
 export function Dashboard() {
-  let url = "https://other-side.herokuapp.com";
+  // let url = "https://other-side.herokuapp.com";
+  let url = "http://localhost:3001";
 
   // Create and configure your Cloudinary instance.
   const cld = new Cloudinary({
@@ -102,6 +103,8 @@ export function Dashboard() {
     };
     axios.post(`${url}/message`, messageData).then((response) => {
       // console.log(response);
+
+      setTimeout(openChat(messageData.chatId), 500);
     });
     return (toEmptyInput.value = "");
   };
