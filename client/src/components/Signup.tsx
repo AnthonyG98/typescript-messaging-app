@@ -6,8 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export function Signup() {
-  // let url = "https://other-side.herokuapp.com";
-  let url = "http://localhost:3001.com";
+  let url = "https://other-side.herokuapp.com";
 
   let history = useNavigate();
 
@@ -50,14 +49,6 @@ export function Signup() {
       history("/dashboard");
     });
   };
-  // useEffect(()=>{
-  //     const getLoggedInUser = () =>{
-  //         axios.get(`${url}/users/${userInput}`).then(response =>{
-  //             console.log(response);
-  //         });
-  //     }
-  //     getLoggedInUser();
-  // }, [logon])
   return (
     <div className="login-container">
       <div className="login-entry-container">
@@ -71,7 +62,7 @@ export function Signup() {
             className="login-input"
             placeholder="username"
             onChange={(e) => {
-              enterUsername(e.target.value);
+              enterUsername(e.target.value);  
             }}
           />
           <input

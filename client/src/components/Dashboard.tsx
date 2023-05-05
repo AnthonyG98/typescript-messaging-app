@@ -11,8 +11,7 @@ import { SearchProps } from "../props/SearchProps";
 import { ChatProps } from "../props/ChatProps";
 import { Settings } from "./Settings";
 export function Dashboard() {
-  // let url = "https://other-side.herokuapp.com";
-  let url = "http://localhost:3001";
+  let url = "https://other-side.herokuapp.com";
 
   // Create and configure your Cloudinary instance.
   const cld = new Cloudinary({
@@ -30,11 +29,6 @@ export function Dashboard() {
   const userChat = useSelector((state: State) => state.chat);
   const userMessage = useSelector((state: State) => state.message);
 
-  // interface UserSearchData {
-  //     inputSearchUser: React.ChangeEvent<HTMLInputElement>;
-  //     prevState: null;
-  // }
-
   // React state management
   const [profilePicture, setProfilePicture] = useState();
   const [myId, setMyId] = useState<number | null>();
@@ -43,7 +37,6 @@ export function Dashboard() {
   const [chat, setChat] = useState<any>([]);
   const [receiverId, setReceiverId] = useState<number | null>();
   const [receiverImg, setReceiverImg] = useState<string>();
-  const [inputSearchUser, setInputSearchUser] = useState<string>("");
 
   const myImage = cld.image(profilePicture);
 
@@ -57,6 +50,7 @@ export function Dashboard() {
         getMyInbox();
       });
   };
+  //Randomize chat ID
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   function generateString(length: number) {
@@ -70,6 +64,7 @@ export function Dashboard() {
     enterChatId(result);
     dashPropsContainer.style.display = "none";
   }
+  //Search user to message
   const searchUser = (search: string) => {
     let arrAllData = [];
     axios.get(`${url}/users/${search}`).then((response) => {
@@ -102,14 +97,16 @@ export function Dashboard() {
       sender_profile_picture: profilePicture,
     };
     axios.post(`${url}/message`, messageData).then((response) => {
-      // console.log(response);
-
-      setTimeout(openChat(messageData.chatId), 500);
+      setTimeout(() => openChat(messageData.chatId), 500);
     });
     return (toEmptyInput.value = "");
   };
   const openChat = (chat: string) => {
+    const chatInputVisibile: Element | null = document.querySelector(
+      ".input-msg-container"
+    );
     axios.get(`${url}/message/chat/${chat}`).then((response) => {
+      chatInputVisibile.style.display = "flex";
       response.data.map((allData: any) => {
         return (
           setReceiverId(null),
@@ -199,6 +196,9 @@ export function Dashboard() {
         {searchForUser}
       </div>
       <div className="msg-container">
+        <div className="msg-default-container">
+          <i className="fal fa-mailbox"></i>{" "}
+        </div>
         <div className="mob-msg-background"></div>
         <div className="chat-container">{chat}</div>
         <div className="input-msg-container">
