@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export function Signup() {
-  let url = "https://other-side.herokuapp.com";
+  let url = "http://localhost:3001";
 
   let history = useNavigate();
 
@@ -62,7 +62,7 @@ export function Signup() {
             className="login-input"
             placeholder="username"
             onChange={(e) => {
-              enterUsername(e.target.value);  
+              enterUsername(e.target.value);
             }}
           />
           <input

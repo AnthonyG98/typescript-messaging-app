@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export function Settings() {
-  let url = "https://other-side.herokuapp.com";
+  let url = "http://localhost:3001";
 
   let history = useNavigate();
 

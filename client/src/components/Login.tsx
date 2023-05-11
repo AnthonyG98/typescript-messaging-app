@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import axios from "axios";
 
 export function Login() {
-  let url = "https://other-side.herokuapp.com";
+  let url = "http://localhost:3001";
 
   let history = useNavigate();
 

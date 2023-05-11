@@ -10,8 +10,30 @@ import { DashProps } from "../props/DashProps";
 import { SearchProps } from "../props/SearchProps";
 import { ChatProps } from "../props/ChatProps";
 import { Settings } from "./Settings";
+import { Configuration, OpenAIApi } from "openai";
+
 export function Dashboard() {
-  let url = "https://other-side.herokuapp.com";
+  let url = "http://localhost:3001";
+
+  //Make API request to ChatGPT
+  const getChatGPT = async () => {
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        message: "Best places to eat in Compton, CA?",
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const response = await fetch(`${url}/completions`, options);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // Create and configure your Cloudinary instance.
   const cld = new Cloudinary({
@@ -102,9 +124,9 @@ export function Dashboard() {
     return (toEmptyInput.value = "");
   };
   const openChat = (chat: string) => {
-    const chatInputVisibile: Element | null = document.querySelector(
+    const chatInputVisibile: any | null = document.querySelector(
       ".input-msg-container"
-    );
+    )!;
     axios.get(`${url}/message/chat/${chat}`).then((response) => {
       chatInputVisibile.style.display = "flex";
       response.data.map((allData: any) => {
@@ -187,7 +209,7 @@ export function Dashboard() {
             className="dashInputImg"
             cloudName="delktfw1a"
             publicId={profilePicture}
-            onClick={() => openSettings()}
+            onClick={() => getChatGPT()}
           />
         </div>
       </div>
