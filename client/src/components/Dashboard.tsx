@@ -20,7 +20,7 @@ export function Dashboard() {
     const options = {
       method: "POST",
       body: JSON.stringify({
-        message: "Best places to eat in Compton, CA?",
+        message: userMessage,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -209,7 +209,7 @@ export function Dashboard() {
             className="dashInputImg"
             cloudName="delktfw1a"
             publicId={profilePicture}
-            onClick={() => getChatGPT()}
+            onClick={() => openSettings()}
           />
         </div>
       </div>
@@ -230,7 +230,7 @@ export function Dashboard() {
             id="msg-input"
             onChange={(e) => enterMessage(e.target.value)}
           />
-          <div className="plane-container" onClick={sendMessage}>
+          <div className="plane-container" onClick={() => getChatGPT()}>
             <i className="fas fa-paper-plane"></i>
           </div>
         </div>
