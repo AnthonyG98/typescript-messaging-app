@@ -9,17 +9,6 @@ const loginAfterSignUp = (signUpUser) => {
   router.post("/login", async (req, res) => {
     const { password } = req.body;
     const user = await Users.findOne({ where: { username: signUpUser } });
-    // if (!user) {
-    //   res.json({ error: "User does not exist." });
-    // }
-    // if(user){
-    //   const validPass = await bcrypt.compare(password.payload, user.password);
-    //     if(validPass){
-    //       res.json(user)
-    //     }else {
-    //       res.json({error: "Wrong username or password."})
-    //     }
-    //   }
     res.json(user);
   });
 };
@@ -34,13 +23,8 @@ router.post("/", async (req, res) => {
         password: hash,
         profile_picture: profile_picture,
       });
-      // loginAfterSignUp(req.body.username);
     });
-    // router.get(`/${username}`, async(req, res) =>{
-    //   const newUser = await Users.findOne({ where: {username: username}});
 
-    //   return newUser
-    // })
     res.json(createdUser);
   } else {
     return res.json("User already exists");

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const API_KEY = "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";
+const API_KEY = "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";
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 

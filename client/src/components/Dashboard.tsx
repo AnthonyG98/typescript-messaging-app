@@ -9,6 +9,7 @@ import { image } from "@cloudinary/url-gen/qualifiers/source";
 import { DashProps } from "../props/DashProps";
 import { SearchProps } from "../props/SearchProps";
 import { ChatProps } from "../props/ChatProps";
+import { ChatAIProps } from "../props/ChatAIProps";
 import { Settings } from "./Settings";
 import { Configuration, OpenAIApi } from "openai";
 
@@ -29,7 +30,13 @@ export function Dashboard() {
     try {
       const response = await fetch(`${url}/completions`, options);
       const data = await response.json();
-      console.log(data);
+      const chatResponse = data.choices[0].message.content;
+      setChat(
+        <ChatProps
+          chatImg={"eniuae4caukwdqymyzon"}
+          chatMessage={chatResponse}
+        />
+      );
     } catch (error) {
       console.log(error);
     }
